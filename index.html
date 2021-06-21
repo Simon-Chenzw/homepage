@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>Simon | 氷</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.x/css/all.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="author" content="Simon">
+  <meta name="copyright" content="Simon" />
+  <meta name="description" content="Simon's Homepage" />
+  <meta name="keywords" content="Simon_Chen,Homepage" />
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-container fill-height>
+          <v-row>
+            <v-col class="text-center">
+              <v-avatar size="128">
+                <v-img src="./image/avatar.jpg" />
+              </v-avatar>
+            </v-col>
+            <v-col class="custom-title"> 氷 </v-col>
+            <v-col class="text-center">
+              <v-divider class="divider-first" />
+            </v-col>
+            <v-col class="custom-description"> 嗨，我是 氷。 </v-col>
+            <v-col>
+              <v-divider class="divider-second" />
+            </v-col>
+            <v-col class="custom-description"> 欢迎来到我的个人网站! </v-col>
+            <v-col class="text-center">
+              <v-btn small rounded outlined v-for="config in button" :href="config.link">
+                {{config.name}}
+                <!-- <v-icon small right v-if="config.icon"> {{config.icon}} </v-icon> -->
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-main>
+      <v-footer app absolute padless>
+        <v-col>
+          Copyright © 2021 Simon Chen
+        </v-col>
+      </v-footer>
+    </v-app>
+  </div>
+</body>
+
+</html>
+
+
+<script>
+  app = new Vue({
+    el: '#app',
+    vuetify: new Vuetify(),
+    data() {
+      return {
+        button: [
+          {
+            name: 'blog',
+            icon: 'fas fa-blog',
+            link: 'https://blog.gokoruri.com/',
+          },
+          {
+            name: 'Codeforces',
+            link: 'https://codeforces.com/profile/Simon_Chen',
+          },
+          {
+            name: 'GitHub',
+            icon: 'fab fa-github',
+            link: 'https://github.com/Simon-Chenzw',
+          },
+
+        ]
+      }
+    },
+    mounted() {
+      this.setBodyBackGround()
+    },
+    methods: {
+      setBodyBackGround() {
+        var bgNum = 3;
+        var randomNum = Math.floor(Math.random() * bgNum) + 1;
+        var imgUrl = `./image/bg-${randomNum}.jpg`;
+        console.log(imgUrl)
+        document.body.style.background = `url(${imgUrl})`
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundPosition = 'center center';
+      },
+    }
+  })
+</script>
+
+<style>
+  html {
+    overflow: auto;
+  }
+
+  #app {
+    background-color: rgba(60, 91, 147, 0.2);
+    background-image: -webkit-linear-gradient(-410deg, rgba(61, 66, 96, 0.6) 20%, rgba(21, 23, 34, 0.8));
+    background-image: linear-gradient(140deg, rgba(61, 66, 96, 0.6) 20%, rgba(21, 23, 34, 0.8));
+  }
+
+  .img,
+  .v-avatar {
+    box-sizing: content-box;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .col {
+    flex: 0 0 100%;
+  }
+
+  .custom-title {
+    font-size: 2em;
+  }
+
+  .custom-title,
+  .custom-description {
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .v-divider {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .divider-first {
+    max-width: 300px;
+  }
+
+  .divider-second {
+    max-width: 150px;
+  }
+
+  .v-btn {
+    text-transform: none;
+    color: #bdbdbd !important;
+    margin: 4px;
+  }
+
+  .v-footer {
+    background-color: rgba(255, 255, 255, 0) !important;
+  }
+
+  .v-footer .col {
+    font-size: .7em;
+    text-align: center;
+    color: #616161;
+  }
+</style>
